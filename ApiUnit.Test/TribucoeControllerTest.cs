@@ -20,8 +20,7 @@ namespace ApiUnit.Test
     public class TribucoeControllerTests
     {
 
-
-        private DbContextOptions<AsignacionContext> _dbContextOptions = new DbContextOptionsBuilder<AsignacionContext>()
+         private DbContextOptions<AsignacionContext> _dbContextOptions = new DbContextOptionsBuilder<AsignacionContext>()
         .UseInMemoryDatabase(databaseName: "MempryDb")
         .EnableSensitiveDataLogging()
         .Options;

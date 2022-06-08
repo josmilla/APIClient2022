@@ -2,9 +2,9 @@ name: .NET
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   build:
@@ -19,7 +19,15 @@ jobs:
         dotnet-version: 5.0.x
     - name: Build
       run: dotnet build "APIClient" --configuration Release
-    - name: Build
-      run: dotnet build --no-restore
+    - name: Publish
+      run: dotnet publish "APIClient" -c Release -o "C:/inetpub/wwwroot/apiasignacion"
+      
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+       name: my-artifact
+       path: "C:/inetpub/wwwroot/apiasignacion" 
     - name: Test
-      run: dotnet test --no-build  "ApiUnit.Test" --verbosity normal
+      run: dotnet test --no-build "ApiUnit.Test" --verbosity normal
+   
+        

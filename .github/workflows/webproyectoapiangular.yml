@@ -19,15 +19,15 @@ jobs:
         dotnet-version: 5.0.x
     - name: Build
       run: dotnet build "APIClient" --configuration Release
+    - name: Test
+      run: dotnet test --no-build "ApiUnit.Test" --verbosity normal
     - name: Publish
-      run: dotnet publish "APIClient" -c Release -o "C:/inetpub/wwwroot/apiasignacion"
-      
+      run: dotnet publish "APIClient" -c Release -o APIClient
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
-       name: my-artifact
-       path: "C:/inetpub/wwwroot/apiasignacion" 
-    - name: Test
-      run: dotnet test --no-build "ApiUnit.Test" --verbosity normal
+       name: APIClient
+       path: C:/inetpub/wwwroot/apiasignacion 
+       if-no-files-found: error
    
         

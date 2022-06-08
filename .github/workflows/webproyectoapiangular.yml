@@ -27,9 +27,6 @@ jobs:
       with:
        name: my-artifact
        path: "C:/inetpub/wwwroot/apiasignacion" 
-    - name: Curl the website as a smoke test
-      run: curl http://localhost:9097/apiasignacion
-      
     - name: Test
       run: dotnet test --no-build "ApiUnit.Test" --verbosity normal
    

@@ -55,8 +55,8 @@ namespace ApiUnit.Test
             var result = await _controller.GetAplicativoAsync();
             var aplicativo = result.As<IEnumerable<Aplicativo>>();
             aplicativo.Should().NotBeNullOrEmpty();
-            aplicativo.Count().Should().Be(5);
-            Assert.AreEqual(5, result.Count());
+            aplicativo.Count().Should().Be(2);
+            Assert.AreEqual(2, result.Count());
 
             //  _logger.Verify(logger => logger.LogError(It.IsAny<string>()), Times.Once);
         }

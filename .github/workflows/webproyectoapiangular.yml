@@ -21,3 +21,11 @@ jobs:
       run: dotnet build "APIClient" --configuration Release
     - name: Test
       run: dotnet test --no-build "ApiUnit.Test" --verbosity normal
+    - name: Publish
+      run: dotnet publish  SimpleFeedReader/csproj -c Release -o Api
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: website
+        path: SimpleFeedReader/website/**
+        if-no-files-found: error

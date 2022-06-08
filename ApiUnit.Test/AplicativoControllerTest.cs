@@ -69,7 +69,7 @@ namespace ApiUnit.Test
         public async Task GetAplicativoByIdAsync()
         {
 
-            var actionResult = await _controller.GetAplicativoByIdAsync(2);
+            var actionResult = await _controller.GetAplicativoByIdAsync(1);
             var aplicativo = actionResult.Value;
             Assert.IsTrue(true);
             aplicativo.Should().NotBeNull();

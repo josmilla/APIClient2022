@@ -22,12 +22,12 @@ jobs:
     - name: Test
       run: dotnet test --no-build "ApiUnit.Test" --verbosity normal
     - name: Publish
-      run: dotnet publish "APIClient" -c Release -o "C:/inetpub/wwwroot/apiasignacion"
+      run: dotnet publish "APIClient" -c Release -o APIClient
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
-       name: my-artifact
-       path: "./APIClient" 
-   
+       name: APIClient
+       path: C:/inetpub/wwwroot/apiasignacion 
+       if-no-files-found: error
    
         

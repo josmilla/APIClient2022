@@ -61,11 +61,9 @@ namespace ApiUnit.Test
             //  _logger.Verify(logger => logger.LogError(It.IsAny<string>()), Times.Once);
         }
 
-       
+       [Test]
 
-        [Test]
-
-       // public async Task<ActionResult<Aplicativo>> GetAplicativoByIdAsync(int id)
+    
         public async Task GetAplicativoByIdAsync()
         {
 
@@ -73,7 +71,7 @@ namespace ApiUnit.Test
             var aplicativo = actionResult.Value;
             Assert.IsTrue(true);
             aplicativo.Should().NotBeNull();
-            aplicativo.CodAplicativo.Should().Be("E150");
+            aplicativo.CodAplicativo.Should().Be("E152");
              
         }
 

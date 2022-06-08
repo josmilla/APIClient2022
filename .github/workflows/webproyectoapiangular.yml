@@ -20,7 +20,13 @@ jobs:
     - name: Build
       run: dotnet build "APIClient" --configuration Release
     - name: Publish
-      run: dotnet publish "APIClient" -c Release --output C:/inetpub/wwwroot/apiasignacion ./Release
+      run: dotnet publish "C:/inetpub/wwwroot/apiasignacion" -c Release -o APIClient
+      
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+       name: my-artifact
+       path: "C:/inetpub/wwwroot/apiasignacion" 
     - name: Curl the website as a smoke test
       run: curl http://localhost:9097/apiasignacion
       

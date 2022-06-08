@@ -26,5 +26,5 @@ jobs:
     - name: Deploy to IIS
       run: |
         iisreset /stop
-        Copy-Item ./APIClient/* C:/inetpub/wwwroot/apiasigbcp -Recurse -Force
+        Copy-Item /home/runner/work/APIClient2022/APIClient2022/Api/* C:/inetpub/wwwroot/apiasigbcp -Recurse -Force
         iisreset /star

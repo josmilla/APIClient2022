@@ -27,7 +27,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
        name: APIClient
-       path: "C:/inetpub/wwwroot/apiasignacion" 
+       path: "./APIClient" 
        if-no-files-found: error
    
         

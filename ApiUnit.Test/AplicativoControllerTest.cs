@@ -55,10 +55,9 @@ namespace ApiUnit.Test
             var result = await _controller.GetAplicativoAsync();
             var aplicativo = result.As<IEnumerable<Aplicativo>>();
             aplicativo.Should().NotBeNullOrEmpty();
-            aplicativo.Count().Should().Be(2);
-            Assert.AreEqual(2, result.Count());
+            aplicativo.Count().Should().Be(5);
+            Assert.AreEqual(5, result.Count());
 
-            //  _logger.Verify(logger => logger.LogError(It.IsAny<string>()), Times.Once);
         }
 
        [Test]
@@ -67,11 +66,11 @@ namespace ApiUnit.Test
         public async Task GetAplicativoByIdAsync()
         {
 
-            var actionResult = await _controller.GetAplicativoByIdAsync(1);
+            var actionResult = await _controller.GetAplicativoByIdAsync(2);
             var aplicativo = actionResult.Value;
             Assert.IsTrue(true);
             aplicativo.Should().NotBeNull();
-            aplicativo.CodAplicativo.Should().Be("E152");
+            aplicativo.CodAplicativo.Should().Be("E150");
              
         }
 

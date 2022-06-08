@@ -19,12 +19,8 @@ jobs:
         dotnet-version: 5.0.x
     - name: Build
       run: dotnet build "APIClient" --configuration Release
-    - name: Deploy to IIS
-      run: |
-        iisreset /stop
-        Copy-Item ./APIClient/* C:/inetpub/wwwroot/apiasignacion -Recurse -Force
-        iisreset /start
-    
+    - name: Publish
+      run: dotnet publish "APIClient" -c Release --output C:/inetpub/wwwroot/apiasignacion ./Release
     - name: Curl the website as a smoke test
       run: curl http://localhost:9097/apiasignacion
       

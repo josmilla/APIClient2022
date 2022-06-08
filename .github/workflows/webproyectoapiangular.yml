@@ -25,5 +25,5 @@ jobs:
       run: dotnet publish  "APIClient" -c Release -o Api
     - name: Deploy to IIS
       run: |
-        Copy-Item /home/runner/work/APIClient2022/APIClient2022/Api/* C:/inetpub/wwwroot/apiasigbcp -Recurse -Force
+        Copy-Item /home/runner/work/APIClient2022/APIClient2022/Api/* C:/inetpub/wwwroot/apiasignacion -Recurse -Force
         

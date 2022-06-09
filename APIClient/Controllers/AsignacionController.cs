@@ -35,7 +35,7 @@ namespace APIClient.Controllers
             return await _asignacionRepository.GetAsignacionAsync();
         }
 
-        // GET api/<AsignacionController>/5
+         
 
         [HttpGet("{id}", Name = "GetAsignacionAsync")]
        

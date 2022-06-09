@@ -22,7 +22,7 @@ namespace APIClient.Controllers
             _logger = logger;
         }
 
-        // GET: api/<AsignacionController>
+        
         [HttpGet]
         public async Task<IEnumerable<Rol>> GetRolAsync()
         {

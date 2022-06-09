@@ -1,24 +1,20 @@
-node ('Principal') {
-       stage('SCM'){
-		checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/josmilla/APIClient2022']]])
-	}
-	stage('Build'){
-		try{
-		sh 'dotnet build APIClient'
-		}finally{
-		archiveArtifacts artifacts: 'APIClient/*.*'
-		}
-	}
-	stage('Test'){
-		echo 'Execute unit tests'
-	}
-	stage('Package'){
-		echo 'Zip it up'
-	}
-	stage('Deploy'){
-		echo 'Push to deployment'
-	}
-	stage('Archive'){
-		archiveArtifacts artifacts: 'APIClient/*.*'
-	}
+pipeline {
+  agent {
+    docker {
+      image 'mcr.microsoft.com/dotnet/sdk:5.0'
+      registryUrl 'https://index.docker.io/v1/'
+    }
+  }
+  stages {
+    stage('Build') {
+      steps {
+        sh 'dotnet build APIClient/APIClient.csproj -c Release -o /app'
+      }
+    }
+    stage('Test') {
+      steps {
+        sh 'dotnet test APIClient/APIClient.csproj -c Release -r /results'
+      }
+    }
+  }
 }

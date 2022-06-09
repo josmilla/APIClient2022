@@ -140,7 +140,8 @@ namespace APIClient
                     builder => { builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); });
             });
 
-            
+            // REGISTRAMOS SWAGGER COMO SERVICIO
+             
 
         }
 

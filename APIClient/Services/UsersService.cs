@@ -19,7 +19,9 @@ namespace APIClient.Services
         {
             { "test1", "password1" },
             { "test2", "password2" },
-            { "admin", "securePassword" }
+            { "admin", "securePassword" },
+            { "0S90385", "0S90385" },
+             { "0U21627", "0U21627" }
         };
         // inject your database here for user validation
         public UserService(ILogger<UserService> logger)

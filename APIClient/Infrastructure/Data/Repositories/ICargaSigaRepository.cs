@@ -10,6 +10,7 @@ namespace APIClient.Infrastructure.Data.Repositories
         Task<CargaSiga> DeleteAsync(int id);
         Task<CargaSiga> GetCargaSigaByIdAsync(int id);
 
+        Task<List<CargaSiga>> GetSigaMatriculaChapter(string matriculachapter);
         Task <CargaSiga> GetCargaMatriculaUsuario(string matricula);
         Task<List<CargaSiga>> GetCargaSigaAsync();
         Task<CargaSiga> InsertAsync(CargaSiga cargasiga);

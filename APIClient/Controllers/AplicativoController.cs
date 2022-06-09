@@ -30,24 +30,24 @@ namespace APIClient.Controllers
         
         public async Task<IEnumerable<Aplicativo>> GetAplicativoAsync()
         {
-//            var userName = User.Identity?.Name;
-   //         _logger.LogInformation($"User [{userName}] is viewing values.");
+         //var userName = User.Identity?.Name;
+         // _logger.LogInformation($"User [{userName}] is viewing values.");
             return await _aplicativoRepository.GetAplicativoAsync();
         }
 
         [HttpGet("{id}", Name = "GetAplicativoAsync")]
         public async Task<ActionResult<Aplicativo>> GetAplicativoByIdAsync(int id)
         {
-          //  var userName = User.Identity?.Name;
-          //  _logger.LogInformation($"User [{userName}] is viewing values.");
+          //var userName = User.Identity?.Name;
+          // _logger.LogInformation($"User [{userName}] is viewing values.");
             return await _aplicativoRepository.GetAplicativoByIdAsync(id);
         }
 
         [HttpPost]
         public async Task<IActionResult> PostAplicativoAsync([FromBody] Aplicativo aplicativo)
         {
-            var userName = User.Identity?.Name;
-            _logger.LogInformation($"User [{userName}] is viewing values.");
+            //var userName = User.Identity?.Name;
+            //_logger.LogInformation($"User [{userName}] is viewing values.");
             var result = await _aplicativoRepository.InsertAsync(aplicativo);
             return CreatedAtRoute("GetAplicativoAsync", new { id = result.IdAplicativo }, result);
         }
@@ -55,8 +55,8 @@ namespace APIClient.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAplicativoAsync(int id, [FromBody] Aplicativo aplicativo)
         {
-            var userName = User.Identity?.Name;
-            _logger.LogInformation($"User [{userName}] is viewing values.");
+            //var userName = User.Identity?.Name;
+            //_logger.LogInformation($"User [{userName}] is viewing values.");
             var result = await _aplicativoRepository.UpdateAsync(id, aplicativo);
             return Ok(result);
         }
@@ -64,8 +64,8 @@ namespace APIClient.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAplicativoAsync(int id)
         {
-            var userName = User.Identity?.Name;
-            _logger.LogInformation($"User [{userName}] is viewing values.");
+            //var userName = User.Identity?.Name;
+            //_logger.LogInformation($"User [{userName}] is viewing values.");
             var result = await _aplicativoRepository.DeleteAsync(id);
             if (result == null)
             {

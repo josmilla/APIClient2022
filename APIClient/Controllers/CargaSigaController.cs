@@ -43,8 +43,21 @@ namespace APIClient.Controllers
         }
 
         // GET api/<GetCargaMatriculaUsuario>/5
-        [HttpGet("/matriculasiga/{matriculasiga}", Name = "GetCargaMatriculaUsuario")]
+        [HttpGet("/api/cargasiga/chapter/{matriculachapter}", Name = "GetSigaMatriculaChapter")]
        
+        public async Task<IEnumerable<CargaSiga>> GetSigaMatriculaChapter(string matriculachapter)
+        {
+            //var clsasignacion = await _rolRepository.GetRolByIdAsync(id);
+            //var userName = User.Identity?.Name;
+            //_logger.LogInformation($"User [{userName}] is viewing values.");
+            return await _cargasigaRepository.GetSigaMatriculaChapter(matriculachapter);
+        }
+        //public async Task<List<CargaSiga>> GetSigaMatriculaChapter(string matriculachapter)
+
+
+        // GET api/<GetCargaMatriculaUsuario>/5
+        [HttpGet("/matriculasiga/{matriculasiga}", Name = "GetCargaMatriculaUsuario")]
+
         public async Task<ActionResult<CargaSiga>> GetCargaMatriculaUsuario(string matriculasiga)
         {
             //var clsasignacion = await _rolRepository.GetRolByIdAsync(id);
@@ -52,7 +65,6 @@ namespace APIClient.Controllers
             //_logger.LogInformation($"User [{userName}] is viewing values.");
             return await _cargasigaRepository.GetCargaMatriculaUsuario(matriculasiga);
         }
-        
 
         // POST api/<AsignacionController>
         [HttpPost]

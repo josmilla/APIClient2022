@@ -34,8 +34,7 @@ namespace APIClient.Controllers
             //_logger.LogInformation($"User [{userName}] is viewing values.");
             return await _asignacionRepository.GetAsignacionAsync();
         }
-
-         
+               
 
         [HttpGet("{id}", Name = "GetAsignacionAsync")]
        
@@ -43,16 +42,18 @@ namespace APIClient.Controllers
         {
             //   var clsasignacion = await _asignacionRepository.GetAsignacionByIdAsync(id);
 
-            //var userName = User.Identity?.Name;
+            // var userName = User.Identity?.Name;
             //_logger.LogInformation($"User [{userName}] is viewing values.");
-            return await _asignacionRepository.GetAsignacionByIdAsync(id);
+          //  return await _asignacionRepository.GetAsignacionByIdAsync(id);
 
-            //if (clsasignacion == null)
-            //{
-            //    return NotFound();
-            //}
+            var clsasignacion = await _asignacionRepository.GetAsignacionByIdAsync(id);
 
-            //return clsasignacion;
+            if (clsasignacion == null)
+            {
+                return NotFound();
+            }
+
+            return clsasignacion;
         }
 
         //public async Task<Asignacion> GetSumaParticipacion
@@ -62,7 +63,7 @@ namespace APIClient.Controllers
         {
             //   var clsasignacion = await _asignacionRepository.GetAsignacionByIdAsync(id);
             //var userName = User.Identity?.Name;
-            //_logger.LogInformation($"User [{userName}] is viewing values.");
+            // _logger.LogInformation($"User [{userName}] is viewing values.");
             return await _asignacionRepository.GetSumaParticipacion(matriculaSuma);
 
           
@@ -72,8 +73,8 @@ namespace APIClient.Controllers
         
         public async Task<IEnumerable<Asignacion>> GetAsignacionMatriculaChapterByIdAsync(string MatriculaChapter)
         {
-            //var userName = User.Identity?.Name;
-            //_logger.LogInformation($"User [{userName}] is viewing values.");
+            // var userName = User.Identity?.Name;
+            // _logger.LogInformation($"User [{userName}] is viewing values.");
             return await _asignacionRepository.GetAsignacionMatriculaChapterByIdAsync(MatriculaChapter);
             
         }
@@ -81,8 +82,8 @@ namespace APIClient.Controllers
         [HttpGet("/usuario/{Usuario}", Name = "GetAsignacionUsuarioAsync")]
         public async Task<IEnumerable<Asignacion>> GetAsignacionMatriculaUsuarioByIdAsync(string Usuario)
         {
-            //var userName = User.Identity?.Name;
-            //_logger.LogInformation($"User [{userName}] is viewing values.");
+             //var userName = User.Identity?.Name;
+             //_logger.LogInformation($"User [{userName}] is viewing values.");
             return await _asignacionRepository.GetAsignacionMatriculausuarioByIdAsync(Usuario);
 
         }
@@ -100,6 +101,8 @@ namespace APIClient.Controllers
         //[Route("api/Asignacion/Create")]
         public async Task<IActionResult> PostAsync([FromBody] Asignacion asignacion)
         {
+           // var userName = User.Identity?.Name;
+           // _logger.LogInformation($"User [{userName}] is viewing values.");
             var result = await _asignacionRepository.InsertAsync(asignacion);
             return CreatedAtRoute("GetAsignacionAsync", new { id = result.IdPorcentajeAsignacion }, result);
         }

@@ -27,6 +27,7 @@ namespace APIClient.Controllers
             _logger = logger;
             _userService = userService;
             _jwtAuthManager = jwtAuthManager;
+           
         }
 
         [AllowAnonymous]

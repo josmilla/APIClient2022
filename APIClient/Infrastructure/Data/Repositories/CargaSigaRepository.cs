@@ -27,6 +27,20 @@ namespace APIClient.Infrastructure.Data.Repositories
             return await _dbSet.Where(p => p.IdCarga == id).FirstOrDefaultAsync();
         }
 
+
+        public async Task<List<CargaSiga>> GetSigaMatriculaChapter(string matriculachapter)
+        {
+
+            var query = await _dbSet 
+             .Where(p => p.MatriculaChapter == matriculachapter)
+             //.ThenInclude(p => p.NombreTribucoe)
+             .ToListAsync();
+            return query;
+            // return await _dbSet.Where(p => p.MatriculaChapter == matricula).ToListAsync();
+        }
+
+
+
         public async Task<CargaSiga> GetCargaMatriculaUsuario(string matricula)
         {
             return await _dbSet.Where(p => p.MatriculaUsuario == matricula).FirstOrDefaultAsync();

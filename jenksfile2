@@ -1,8 +1,7 @@
 pipeline {
     agent {
         docker { 
-      
-          image 'mcr.microsoft.com/dotnet/framework/sdk:5.0'
+          image 'mcr.microsoft.com/dotnet/sdk:5.0'
           label 'windows'
         }
         

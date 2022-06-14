@@ -1,4 +1,4 @@
-@Library('jenkins-sharedlib@feature/modularization-net-core')
+
 import sharedlib.NetCoreJenkinsUtil
 def utils = new NetCoreJenkinsUtil(this)
 /* Project settings */

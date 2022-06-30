@@ -1,0 +1,51 @@
+pipeline {
+    agent {
+        docker { 
+          image 'mcr.microsoft.com/dotnet/sdk:5.0'
+          label 'windows'
+        }
+        
+    }
+    stages {
+         stage('Restore nuget') {
+            steps {
+              
+              
+                bat 'dotnet restore' //for .NET core
+                bat 'nuget restore APIClient.sln' // for .NET framework
+               
+            }
+        }
+        stage('Build') {
+            steps {
+               
+                bat 'dotnet build --configuration Release ./APIClient/APIClient.csproj'           
+                bat 'msbuild APIClient.sln /target:APIClient_NetFrameworkApp /p:Configuration=Release'
+               
+            }
+        }
+        stage('Test') {
+            steps {
+                bat 'dotnet test --logger trx ./ApiUnit.Test/ApiUnit.Test.csproj'
+            }
+             post {
+                    always {
+                      //plugin: https://plugins.jenkins.io/mstest/
+                        mstest testResultsFile:"**/*.trx", keepLongStdio: true
+                    }
+        
+                }           
+        }
+        
+        stage('Deploy') {
+            steps {
+                bat 'mkdir deploy'
+                bat 'dotnet publish --self-contained --runtime win-x64 -c Release ./APIClient/APIClient.csproj -o ./deploy/APIClient'            
+           	    //NOT BE TESTED YET
+                bat 'msbuild BigProject.sln /target:APIClient_NetFrameworkApp /p:Configuration=Release /p:DeployOnBuild=True /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:publishUrl=./deploy/APIClient'
+                archiveArtifacts artifacts: 'deploy/**', fingerprint: true
+                
+            }
+        }
+    }
+}

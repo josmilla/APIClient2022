@@ -128,7 +128,7 @@ namespace APIClient
             services.AddScoped<ITribucoeRepository, TribucoeRepository>();
             services.AddHealthChecks()
             .AddDbContextCheck<AsignacionContext>()
-            .AddUrlGroup(new Uri("http://localhost:4200"), name: "Google Inc.")
+            .AddUrlGroup(new Uri("http://localhost:4200"), name: "Front Web.")
             .AddCheck<CustomHealthCheck>(name: "New Custom Check")
             .AddCheck("CatalogDB-Check", new SqlConnectionHealthCheck(connectionString), HealthStatus.Unhealthy, new string[] { "catalogdb" });
 

@@ -36,17 +36,17 @@ namespace APIClient.Controllers
         [HttpGet("{id}", Name = "GetRolAsync")]
         public async Task<ActionResult<Rol>> GetRolByIdAsync(int id)
         {
-            //var clsasignacion = await _rolRepository.GetRolByIdAsync(id);
+            var clsasignacion = await _rolRepository.GetRolByIdAsync(id);
             //var userName = User.Identity?.Name;
             //_logger.LogInformation($"User [{userName}] is viewing values.");
-            return await _rolRepository.GetRolByIdAsync(id);
+         //   return await _rolRepository.GetRolByIdAsync(id);
 
-            //if (clsasignacion == null)
-            //{
-            //    return NotFound();
-            //}
+           if (clsasignacion == null)
+             {
+                return NotFound();
+            }
 
-            //return clsasignacion;
+            return clsasignacion;
         }
 
       
